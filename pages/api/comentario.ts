@@ -5,6 +5,7 @@ import { UsuarioModel } from "@/models/UsuarioModel";
 import { PublicacaoModel } from "@/models/PublicacaoModel";
 import { recordTraceEvents } from "next/dist/trace";
 import { SeguidorModel } from "@/models/SeguidorModel";
+import { politicaCORS } from "@/middlewares/politicaCors";
 
 const comentarioEndpoint = async (
   req: NextApiRequest,
@@ -46,4 +47,6 @@ const comentarioEndpoint = async (
     return res.status(500).json("Ocorreu erro ao adicionar o comentário!");
   }
 };
-export default validarTokenJWT(conectarMongoDB(comentarioEndpoint));
+export default politicaCORS(
+  validarTokenJWT(conectarMongoDB(comentarioEndpoint))
+);

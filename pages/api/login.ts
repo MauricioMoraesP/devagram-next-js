@@ -5,6 +5,7 @@ import { UsuarioModel } from "@/models/UsuarioModel";
 import md5 from "md5";
 import jwt from "jsonwebtoken";
 import { LoginResposta } from "@/types/LoginResposta";
+import { politicaCORS } from "@/middlewares/politicaCors";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 const endpointLogin = async (
@@ -35,4 +36,4 @@ const endpointLogin = async (
   return res.status(405).json({ erro: "Método informado não é valido!" });
 };
 
-export default conectarMongoDB(endpointLogin);
+export default politicaCORS(conectarMongoDB(endpointLogin));

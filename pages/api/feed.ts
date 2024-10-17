@@ -5,6 +5,7 @@ import { UsuarioModel } from "@/models/UsuarioModel";
 import { PublicacaoModel } from "@/models/PublicacaoModel";
 import { recordTraceEvents } from "next/dist/trace";
 import { SeguidorModel } from "@/models/SeguidorModel";
+import { politicaCORS } from "@/middlewares/politicaCors";
 const feedEndpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     if (req.method === "GET") {
@@ -59,4 +60,4 @@ const feedEndpoint = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default validarTokenJWT(conectarMongoDB(feedEndpoint));
+export default politicaCORS(validarTokenJWT(conectarMongoDB(feedEndpoint)));
