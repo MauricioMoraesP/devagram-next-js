@@ -1,5 +1,5 @@
 import multer from "multer";
-
+import cosmicjs from "cosmicjs";
 const {
   BUCKET_SLUG_AVATARES,
   WRITE_KEY_AVATARES,
